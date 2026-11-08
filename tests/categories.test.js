@@ -1,7 +1,7 @@
 // tests/categories.test.js
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { CATEGORIES, categoryOf } from '../src/lib/categories.js';
+import { CATEGORIES, SHOP_RULES, categoryOf } from '../src/lib/categories.js';
 
 test('the category keys and labels are exported in order', () => {
   assert.deepEqual(CATEGORIES, [
@@ -14,6 +14,12 @@ test('the category keys and labels are exported in order', () => {
     { key: 'income', label: 'Income' },
     { key: 'other', label: 'Other' },
   ]);
+});
+
+test('the shop rules are exported as data, one entry per shop', () => {
+  assert.equal(SHOP_RULES.length, 27);
+  assert.deepEqual(SHOP_RULES[0], { shop: 'Greenbarrow Fresh', category: 'groceries' });
+  assert.deepEqual(SHOP_RULES[26], { shop: 'Oakridge Dividends', category: 'income' });
 });
 
 test('one shop from each category resolves to its key', () => {
