@@ -1,7 +1,20 @@
 // tests/categories.test.js
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { categoryOf } from '../src/lib/categories.js';
+import { CATEGORIES, categoryOf } from '../src/lib/categories.js';
+
+test('the category keys and labels are exported in order', () => {
+  assert.deepEqual(CATEGORIES, [
+    { key: 'groceries', label: 'Groceries' },
+    { key: 'eating_out', label: 'Eating out' },
+    { key: 'transport', label: 'Transport' },
+    { key: 'bills', label: 'Bills' },
+    { key: 'shopping', label: 'Shopping' },
+    { key: 'health', label: 'Health' },
+    { key: 'income', label: 'Income' },
+    { key: 'other', label: 'Other' },
+  ]);
+});
 
 test('one shop from each category resolves to its key', () => {
   assert.equal(categoryOf('Greenbarrow Fresh'), 'groceries');
