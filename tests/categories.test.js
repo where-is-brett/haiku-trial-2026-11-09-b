@@ -18,6 +18,7 @@ test('the category keys and labels are exported in order', () => {
 
 test('the shop rules are exported as data, one entry per shop', () => {
   assert.equal(SHOP_RULES.length, 27);
+  assert.equal(new Set(SHOP_RULES.map(({ shop }) => shop)).size, 27);
   assert.deepEqual(SHOP_RULES[0], { shop: 'Greenbarrow Fresh', category: 'groceries' });
   assert.deepEqual(SHOP_RULES[26], { shop: 'Oakridge Dividends', category: 'income' });
 });
